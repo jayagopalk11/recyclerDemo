@@ -2,16 +2,20 @@ package com.recyclerdemo.controller;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.recyclerdemo.R;
 import com.recyclerdemo.model.ListItem;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Filter;
 
 /**
  * Created by Jai on 4/14/2017.
@@ -22,6 +26,8 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.customHold
 
     public ItemClickCallback ItemClickCallback;
 
+
+
     public interface ItemClickCallback{
         void onImageClick(int p);
         void onItemClick(int p);
@@ -31,7 +37,8 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.customHold
         this.ItemClickCallback = ItemClickCallback;
     }
 
-    private List<ListItem> data;
+    public List<ListItem> data;
+    private List<ListItem> orig;
     private LayoutInflater inflater;
 
     public customAdapter(List<ListItem> data, Context c) {
@@ -57,6 +64,9 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.customHold
     public int getItemCount() {
         return data.size();
     }
+
+
+
 
     class customHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
