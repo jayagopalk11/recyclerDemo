@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Filterable;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.view.MenuInflater;
-public class MainActivity extends AppCompatActivity implements customAdapter.ItemClickCallback , Filterable{
+public class MainActivity extends AppCompatActivity implements customAdapter.ItemClickCallback , Filterable ,playerFragment.FragClickListener{
 
     private RecyclerView Rec;
     private customAdapter myAdapter;
@@ -118,4 +119,8 @@ public class MainActivity extends AppCompatActivity implements customAdapter.Ite
     }
 
 
+    @Override
+    public void playerFrag(View view) {
+        Toast.makeText(this,"Fragment clicked",Toast.LENGTH_SHORT).show();
+    }
 }
